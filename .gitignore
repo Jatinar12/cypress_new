@@ -51,8 +51,12 @@ Thumbs.db
 # Cucumber Report
 reports
 
-allure-reports
+allure-report
 allure-results
 
+
+screenshots
+
+video
 
 screenshots
