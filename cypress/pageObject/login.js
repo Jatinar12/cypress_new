@@ -1,10 +1,10 @@
-import LoginPageLocators from "../pages/loginPageLocators";
-import GenericActions from "../utilities/genericActions";
+import LoginPageLocators from '../pages/loginPageLocators';
+import GenericActions from '../utilities/genericActions';
 import WebText from '../helpers/webText';
-import Decryption from "../utilities/decryption";
+import Decryption from '../utilities/decryption';
 import WebTextBox from '../helpers/webTextBox';
-import WebButton from "../helpers/webButton";
-import WebXpath from "../helpers/webXpath";
+import WebButton from '../helpers/webButton';
+import WebXpath from '../helpers/webXpath';
 
 const generic = new GenericActions();
 const login = new LoginPageLocators();
@@ -15,57 +15,54 @@ const webButton = new WebButton();
 const webXpath = new WebXpath();
 
 class LoginPage {
+  visit() {
+    generic.visit();
+  }
 
+  checkVisibilityOfHeading(heading) {
+    webText.verifyExactText(login.getHeading(), heading);
+  }
 
-    visit() {
-        generic.visit();
-    }
+  checkVisibilityOfSubHeading(subheading) {
+    webText.verifyExactText(login.getSubHeading(), subheading);
+  }
 
-    checkVisibilityOfHeading(heading) {
-        webText.verifyExactText(login.getHeading(), heading)
-    }
+  typeEmailOnEmailInputField(email) {
+    const decodedEmail = decode.getDecodedString(email);
+    webTextBox.typeText(login.getEmailField(), decodedEmail);
+  }
 
-    checkVisibilityOfSubHeading(subheading) {
-        webText.verifyExactText(login.getSubHeading(), subheading)
-    }
+  typePasswordOnPasswordInputField(password) {
+    const decodedPassword = decode.getDecodedString(password);
+    webTextBox.typeText(login.getPasswordField(), decodedPassword);
+  }
 
-    typeEmailOnEmailInputField(email) {
-        let decodedEmail = decode.getDecodedString(email);
-        webTextBox.typeText(login.getEmailField(), decodedEmail)
-    }
+  checkRememberMeCheckbox() {
+    webButton.check(login.getRememberMeCheckBox());
+  }
 
-    typePasswordOnPasswordInputField(password) {
-        let decodedPassword = decode.getDecodedString(password);
-        webTextBox.typeText(login.getPasswordField(), decodedPassword)
-    }
+  clickButtonByVisibleText(string) {
+    webXpath.clickByXpath('visibleText', string);
+  }
 
-    checkRememberMeCheckbox() {
-        webButton.check(login.getRememberMeCheckBox())
-    }
+  checkUrlContainsText(url) {
+    generic.wait(3000);
+    generic.checkUrl(url);
+  }
 
-    clickButtonByVisibleText(string) {
-        webXpath.clickByXpath("visibleText", string)
-    }
+  checkTextVisibility(string) {
+    webXpath.shouldContainTextByXpath('visibleText', string);
+  }
 
-    checkUrlContainsText(url) {
-        generic.wait(3000);
-        generic.checkUrl(url);
-    }
-
-    checkTextVisibility(string) {
-        webXpath.shouldContainTextByXpath("visibleText", string)
-    }
-
-    iloginWithAdminCredentials(user) {
-
-        generic.visit();
-        let decodedEmail = decode.getDecodedString(`${user}_email`);
-        webTextBox.typeText(login.getEmailField(), decodedEmail);
-        let decodedPassword = decode.getDecodedString(`${user}_password`);
-        webTextBox.typeText(login.getPasswordField(), decodedPassword);
-        webButton.check(login.getRememberMeCheckBox());
-        webXpath.clickByXpath("visibleText", "Log in")
-    }
+  iloginWithAdminCredentials(user) {
+    generic.visit();
+    const decodedEmail = decode.getDecodedString(`${user}_email`);
+    webTextBox.typeText(login.getEmailField(), decodedEmail);
+    const decodedPassword = decode.getDecodedString(`${user}_password`);
+    webTextBox.typeText(login.getPasswordField(), decodedPassword);
+    webButton.check(login.getRememberMeCheckBox());
+    webXpath.clickByXpath('visibleText', 'Log in');
+  }
 }
 
 export default LoginPage;

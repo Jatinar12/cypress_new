@@ -27,32 +27,14 @@
     "cypress": "^10.10.0",
     "esbuild": "^0.15.11",
     "eslint": "^8.49.0",
-    "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-google": "^0.14.0",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-import": "^2.28.1",
-    "eslint-plugin-prettier": "^5.0.0",
-    "husky": "^8.0.3",
-    "lint-staged": "^14.0.1",
     "mocha-allure-reporter": "^1.4.0",
     "multiple-cucumber-html-reporter": "^3.0.1",
-    "prettier": "3.0.3"
+    "prettier": "^3.0.3"
   },
   "dependencies": {
     "base-64": "^1.0.0",
     "cypress-xpath": "^2.0.1",
-    "eslint-config-airbnb": "^19.0.4",
     "winston": "^3.8.2"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "**/*.js": [
-      "eslint --fix",
-      "git add"
-    ]
   }
 }
