@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "cypress:runner": "cypress open",
-    "cypress:headless":"cypress run",
+    "cypress:headless": "cypress run",
     "cypress:execution": "cypress run --env allure=true",
     "cypress:execution-tags": "cypress run --env tags=@mobile or @desktop",
     "clean:folders": "rm -R -f allure-report/* && rm -R -f allure-results/*",
@@ -17,6 +17,22 @@
   "keywords": [
     "cypress"
   ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{html,css,less,ejs}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
   "author": "cucumber",
   "license": "ISC",
   "devDependencies": {
@@ -28,8 +44,11 @@
     "esbuild": "^0.15.11",
     "eslint": "^8.49.0",
     "eslint-config-google": "^0.14.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
     "mocha-allure-reporter": "^1.4.0",
-    "multiple-cucumber-html-reporter": "^3.0.1"
+    "multiple-cucumber-html-reporter": "^3.0.1",
+    "prettier": "^3.0.3"
   },
   "dependencies": {
     "base-64": "^1.0.0",
