@@ -11,7 +11,7 @@ const decode = new Decryption();
 
 Given('I am on the login page', () => {
   loginPage.visit();
-  var test = "danish";
+  var a ="ansih"
 });
 
 When('I click on the {string} button', (label) => {
