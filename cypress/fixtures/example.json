@@ -1,6 +1,11 @@
 {
-  "admin_email": "IGFkbWluQHlvdXJzdG9yZS5jb20=",
-  "admin_password": "YWRtaW4=",
-  "invalid_email": "IGFkbWluQHlvdXJzdG9yZS5jb21=",
-  "invalid_password": "ZGFuaXNoc29tYQ=="
+  "USER_EMAIL":"TWFuaWtAZ21haWwuY29t",
+  "USER_PASSWORD":"TWFuaWtAMTIz",
+  "DOCTOR_EMAIL" : "U2h1YmFtQGdtYWlsLmNvbQ==",
+  "DOCTOR_PASSWORD" : "U2h1YmFtQDEyMw==",
+  "PATIENT_EMAIL" : "TWFuaWtAZ21haWwuY29t",
+  "PATIENT_PASSWORD" : "TWFuaWtAMTIz",
+  "DASHBOARD" : "Lw=="
 }
+
+

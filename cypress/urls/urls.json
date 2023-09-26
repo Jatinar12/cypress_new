@@ -1,0 +1,9 @@
+{
+    "Homepage":"/",
+    "Patient Signup":"/auth/signup",
+    "404 error" : "/error",
+    "Login" : "/auth/login",
+    "Forgot Password" : "/forgot",
+    "Specialities" : "/specialities",
+    "Reset Password" : "/reset/34343"
+}

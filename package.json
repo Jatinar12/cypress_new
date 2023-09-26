@@ -11,7 +11,7 @@
     "clean:folders": "rm -R -f allure-report/* && rm -R -f allure-results/*",
     "beforetest": "npm run clean:folders",
     "allure:report": "allure generate allure-results --clean && allure open allure-report",
-    "tests": "npm run beforetest && npm run cypress:execution || npm run aftertest",
+    "tests": "npm run cypress:execution || npm run aftertest",
     "aftertest": "npm run allure:report"
   },
   "keywords": [
@@ -36,5 +36,9 @@
     "base-64": "^1.0.0",
     "cypress-xpath": "^2.0.1",
     "winston": "^3.8.2"
+  },
+
+  "env": { 
+    "allureResultsPath": "allure-results"
   }
 }
