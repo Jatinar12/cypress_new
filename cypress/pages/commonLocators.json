@@ -1,56 +1,12 @@
-{
-    "email/Number" : "css, #emailOrMobile",
-    "password" : "css, #password",
+  {
     "login button" : "xpath, (//*[@type='button'])[1]",
     "submit button" : "xpath, (//*[@type='submit'])[2]",
     "patientSignup button" : "xpath, (.//a[@role='tab'])[2]",
-    "full name" : "css, #full_name"
+    "date" : "css, [id='dropdown-day'] select",
+    "month" : "css, [id='dropdown-month'] select",
+    "year" : "css, [id='dropdown-year'] select",
+    "register button" : "xpath, //*[text()='Register']",
+    "logo" : "css, button[class='MuiButtonBase-root MuiIconButton-root']"
+
   }
 
-
-  // {
-  //   "email/Number" : "css, #emailOrMobile",
-  //   "password" : "css, #password",
-  //   "login button" : "css, button[type='submit'][tabindex='2']",
-  //   "submit button" : "xpath, (//*[@type='submit'])[2]",
-  //   "patientSignup button" : "xpath, (.//a[@role='tab'])[2]",
-  //   "full name" : "css, [id='full_name']",
-  //   "gender" : "xpath, //*[text()='Male']", ### xoath
-  //   "date": "css, [id='dropdown-day'] select", ####################################
-  //   "month" : "css, [id='dropdown-month'] select", ##########
-  //   "year" : "css, [id='dropdown-year'] select", @@@@@#########
-  //   "email" : "css, [id='email_address']",
-  //   "mobile number" : "css, [id='mobile_number']", ###############################
-  //   "create password" : "css, [id='password']",
-  //   "confirm password" : "css, [id='confirm_password']", #################################################################
-  //   "register button" : "xpath, //*[text()='Register']", ################################################################
-  //   "view all specialities link" : "css, [id='specialities'] a:eq(6)", ############
-  //   "speciality card" : "css, div [title='Cardiac Surgery']", #######################################################
-  //   "first doctor card" : "xpath, //*[text()='Dr. Erick Mccullough']", ################################
-  //   "doctor cards" : "css, div [class='MuiCardContent-root']",
-  //   "dash board": "xpath, (//*[@type='button'])[16]",
-  //   "PATIENT_EMAIL" : "css, div [id='emailOrMobile']", #####################
-  //   "PATIENT_PASSWORD" : "css, div [id='password']", #############################
-  //   "specialities field button": "xpath, //*[text()='Specialities']", ##########################
-  //   "search": "css, input[placeholder='Search Doctors']", ##########
-  //   "specialities card" : "css, div[title='Dental']", ##########################################
-  //   "specialities field" : "css, form[class=MuiFormControl-root]",
-  //   "doctor" : "xpath, //h6[not(@class='MuiTypography-root MuiTypography-h6')]",
-  //   "user" : "xpath, //*[@class='MuiTypography-root MuiTypography-h6']",
-  //   "error message" : "css, p[class='MuiTypography-root MuiTypography-body1']",
-  //   "search icon button": "xpath, //*[@aria-label='search specialities']",
-  //   "speciality" : "css, input[placeholder='Select a Service']", ####################################
-  //   "icon button" : "css, button[class='MuiButtonBase-root MuiIconButton-root']",
-  //   "logo" : "css, button[class='MuiButtonBase-root MuiIconButton-root']",
-  //   "confirmed password" : "xpath, (//*[@type='password'])[2]", #######################
-  //   "provided email" : "xpath, (//*[@type='text'])[3]",
-  //   "send reset link button" : "xpath, //*[text()='Send Reset Link']", ###################################
-  //   "update password" : "xpath, (//*[@class='MuiInputBase-input MuiOutlinedInput-input'])[1]",
-  //   "reset password button" : "xpath, (//*[text()='Reset Password'])[2]",
-  //   "disabled" : "xpath, //*[@aria-label='Go to previous page']",
-  //   "enabled" : "xpath, //*[text()='2']",
-  //   "speciality filter field" : "xpath, (//*[@class='MuiFormControl-root'])[2]",
-  //   "speciality filter" : "css, li[data-value='8']",
-  //   "_EMAIL" : "css, div [id='emailOrMobile']",
-  //   "DOCTOR_PASSWORD" : "css, [id='password']"
-  // }

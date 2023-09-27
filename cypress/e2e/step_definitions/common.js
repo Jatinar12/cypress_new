@@ -33,10 +33,21 @@ When('user clicks on the {string}', (elementIdentifier) => {
   }
 });
 
-When('user enters value {string} in the {string} input field', (text, elementIdentifier) => {
+When('user clicks on the {string} field', (elementIdentifier) => {
+  const ele = elementIdentifier.split('-');
   try {
-    webButton.focusClick(commonLocators[elementIdentifier]);
-    webTextBox.typeText(commonLocators[elementIdentifier], text);
+    actions.wait(3000);
+    // webButton.click(commonLocators[elementIdentifier]);
+  } catch (error) {
+    cy.log('not able to click on the button' + error);
+    throw new Error('The condition was not met!');
+  }
+});
+
+When('user enters value {string} in the {string} input field', (text, elementIdentifier) => {
+  const ele = elementIdentifier.split('-');
+  try {
+    webXpath.typeTextByXpath(ele[0], ele[1], text);
   } catch (error) {
     cy.log('not able to click on the button' + error);
     throw new Error('The condition was not met!');

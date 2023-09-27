@@ -54,4 +54,4 @@
 #                         | Reset Password | ALPHA@12     | ALPHA@12         | A lowercase letter             |
 #                         | Reset Password | alpha@123    | alpha@123        | An uppercase letter            |
 #                         | Reset Password | Alpha@#$     | Alpha@#$         | At least one number            |
-#                         | Reset Password | Alpha@12     | Alpha@123        | Passwords must match           |
+                        | Reset Password | Alpha@12     | Alpha@123        | Passwords must match           |

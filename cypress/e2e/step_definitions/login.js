@@ -4,16 +4,29 @@ import Decryption from '../../utilities/decryption.js';
 import Urls from '../../urls/urls.json';
 import GenericActions from '../../utilities/genericActions.js';
 import commonLocators from '../../pages/commonLocators.json';
+import WebXpath from '../../helpers/webXpath.js';
 
 const webTextBox = new WebTextBox();
 const decode = new Decryption();
+const webXpath = new WebXpath();
 
 When('user enters the user {string} in the {string} input field', (userData, elementIdentifier) => {
-  const decodedText = decode.getDecodedString(userData);
-  webTextBox.typeText(commonLocators[elementIdentifier], decodedText);
+  try {
+    const decodedText = decode.getDecodedString(userData);
+    webXpath.typeTextByXpath(elementIdentifier, 'id', decodedText);
+  } catch (error) {
+    cy.log('Unable to type in input field' + error);
+    throw new Error('The condition was not met!');
+  }
 });
 
 Then('user should navigate to the {string}', (url) => {
-  const actions = new GenericActions();
-  actions.checkUrl(Urls[url]);
+  try {
+    const actions = new GenericActions();
+    actions.checkUrl(Urls[url]);
+  } catch (error) {
+    cy.log('not navigated to particular url' + error);
+    throw new Error('The condition was not met!');
+  }
 });
+

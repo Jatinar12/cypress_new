@@ -1,4 +1,4 @@
-# Feature: Error Page
+#  Feature: Error Page
 
 #   @ERPA001 @MYD-83 @Regression @NotAutomated @Patient @Error
 #   Scenario Outline: Checking the visibility of the UI element of 404 error page

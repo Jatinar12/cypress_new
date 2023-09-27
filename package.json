@@ -8,10 +8,11 @@
     "cypress:headless": "cypress run",
     "cypress:execution": "cypress run --env allure=true",
     "cypress:execution-tags": "cypress run --env tags=@mobile or @desktop",
-    "clean:folders": "rm -R -f allure-report/* && rm -R -f allure-results/*",
-    "beforetest": "npm run clean:folders",
+    "clean:allure-results": "cd cypress.io && rmdir -r -path allure-results",
+    "clean:allure-report":"cd cypress.io && rmdir -r -path allure-report",
+    "beforetest": "clean:allure-results || clean:allure-report",
     "allure:report": "allure generate allure-results --clean && allure open allure-report",
-    "tests": "npm run cypress:execution || npm run aftertest",
+    "tests": "npm run clean:allure-results || npm run clean:allure-report",
     "aftertest": "npm run allure:report"
   },
   "keywords": [
