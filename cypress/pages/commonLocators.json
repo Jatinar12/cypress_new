@@ -1,12 +1,7 @@
   {
-    "login button" : "xpath, (//*[@type='button'])[1]",
+    "login button" : "xpath, //*[@type='button']",
     "submit button" : "xpath, (//*[@type='submit'])[2]",
-    "patientSignup button" : "xpath, (.//a[@role='tab'])[2]",
-    "date" : "css, [id='dropdown-day'] select",
-    "month" : "css, [id='dropdown-month'] select",
-    "year" : "css, [id='dropdown-year'] select",
-    "register button" : "xpath, //*[text()='Register']",
-    "logo" : "css, button[class='MuiButtonBase-root MuiIconButton-root']"
+    "logo" : "xpath, (//*[@type='submit'])[2]"
 
   }
 

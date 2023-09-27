@@ -33,16 +33,16 @@ When('user clicks on the {string}', (elementIdentifier) => {
   }
 });
 
-When('user clicks on the {string} field', (elementIdentifier) => {
-  const ele = elementIdentifier.split('-');
-  try {
-    actions.wait(3000);
-    // webButton.click(commonLocators[elementIdentifier]);
-  } catch (error) {
-    cy.log('not able to click on the button' + error);
-    throw new Error('The condition was not met!');
-  }
-});
+// When('user clicks on the {string} field', (elementIdentifier) => {
+//   const ele = elementIdentifier.split('-');
+//   try {
+//     actions.wait(3000);
+//     // webButton.click(commonLocators[elementIdentifier]);
+//   } catch (error) {
+//     cy.log('not able to click on the button' + error);
+//     throw new Error('The condition was not met!');
+//   }
+// });
 
 When('user enters value {string} in the {string} input field', (text, elementIdentifier) => {
   const ele = elementIdentifier.split('-');
@@ -90,8 +90,9 @@ Given('{string} per page is {string}', (elementIdentifier, text) => {
 });
 
 When('user clicks on the {string} field', (elementIdentifier) => {
+  const ele = elementIdentifier.split('-');
   try {
-    webXpath.clickByXpath('visibleText', elementIdentifier);
+    webXpath.clickByXpath(ele[0], ele[1]);
   } catch (error) {
     cy.log('not able to click on the button' + error);
     throw new Error('The condition was not met!');

@@ -3,8 +3,8 @@ Feature: Patient Registration
   @PASI001 @Sanity @NotAutomated @Regression @PatientRegistration
   Scenario Outline:User navigates to the Patient Registration page and signs up
     Given user navigates to the "<Page type>" page
-    When user clicks on the "login button"
-    When user clicks on the "patientSignup button"
+    When user clicks on the "Login" field
+    When user clicks on the "Patient Sign up" field
     When user enters value "<Name>" in the "full_name-id" input field
     And user selects checkbox with value "Gender" Type
     And user selects "<Date>" in the "date" select field
@@ -14,7 +14,7 @@ Feature: Patient Registration
     And user enters value "<Mobile Number>" in the "mobile_number-id" input field
     And user enters value "<Password>" in the "password-id" input field
     And user enters value "<Password>" in the "confirm_password-id" input field
-    # When user clicks on the "register button"
+    # When user clicks on the "Register" field
     # Then user can view message "<Registration Message>"
     Examples:
       | Page type | Name         | Email               | Mobile Number | Password    | Gender | Page Type            | Date | Month | Year | Registration Message    |
@@ -24,8 +24,8 @@ Feature: Patient Registration
 #   @PASI002  @PatientRegistration @Regression @NotAutomated @Patient
   Scenario Outline: User navigates to the Patient Registration and signs up with invalid data
     Given user navigates to the "<Page type>" page
-    When user clicks on the "login button"
-    When user clicks on the "patientSignup button"
+    When user clicks on the "Login" field
+    When user clicks on the "Patient Sign up" field
     When user enters value "<Name>" in the "full_name-id" input field
     And user selects checkbox with value "Gender" Type
     And user enters value "<Email>" in the "email_address-id" input field
@@ -41,11 +41,11 @@ Feature: Patient Registration
       | Homepage  | sam   | abc@abc.com | 954110829     | Patient Registration | Please enter a valid 10-digit mobile number! |
       | Homepage  | sam   | abc@abc.com | 987654115     | Patient Registration | Please enter a valid 10-digit mobile number! |
 
-  @PASI003  @PatientRegistration @Regression @NotAutomated @Patient
+  # @PASI003  @PatientRegistration @Regression @NotAutomated @Patient
   Scenario Outline: User is not able to register with invalid password
     Given user navigates to the "<Page type>" page
-    When user clicks on the "login button"
-    When user clicks on the "patientSignup button"
+    When user clicks on the "Login" field
+    When user clicks on the "Patient Sign up" field
     When user enters value "<Name>" in the "full_name-id" input field
     And user selects checkbox with value "Gender" Type
     And user enters value "<Email>" in the "email_address-id" input field
@@ -64,11 +64,11 @@ Feature: Patient Registration
       | Homepage  | Test User | 9876543211    | Male       | abc@abc.com | !@#$%^         | Must contain lowercase letter.               |
       | Homepage  | Test User | 9876543211    | Male       | abc@abc.com | Alpha@12       | Passwords must match.                        |
 
-  @PASI004 @PatientRegistration @Regression @NotAutomated @Patient
+#   @PASI004 @PatientRegistration @Regression @NotAutomated @Patient
   Scenario Outline: User is not able to register with existing mobile number & email
     Given user navigates to the "<Page type>" page
-    When user clicks on the "login button"
-    When user clicks on the "patientSignup button"
+    When user clicks on the "Login" field
+    When user clicks on the "Patient Sign up" field
     When user enters value "<Name>" in the "full_name-id" input field
     And user selects checkbox with value "Gender" Type
     And user selects "<Date>" in the "date" select field

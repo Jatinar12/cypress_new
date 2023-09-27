@@ -18,7 +18,7 @@ Given('user logs in with {string} credentials', (role) => {
   const decodedPassword = decryption.getDecodedString(`${role}_PASSWORD`);
   actions.visit('/');
   webButton.click(commonLocators['login button']);
-  // webXpath.typeTextByXpath(`emailOrMobile`, 'id', decodedEmail);
-  // webXpath.typeTextByXpath(`password`, 'id', decodedPassword);
-  // webButton.click(commonLocators['submit button']);
+  webXpath.typeTextByXpath(`emailOrMobile`, 'id', decodedEmail);
+  webXpath.typeTextByXpath(`password`, 'id', decodedPassword);
+  webButton.click(commonLocators['submit button']);
 });
