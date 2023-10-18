@@ -9,24 +9,22 @@ import WebXpath from '../../helpers/webXpath.js';
 const webTextBox = new WebTextBox();
 const decode = new Decryption();
 const webXpath = new WebXpath();
+const actions = new GenericActions();
 
-When('user enters the user {string} in the {string} input field', (userData, elementIdentifier) => {
+When('user enters the user {string} in the {string} input field', (userData, locatorIdentifier) => {
   try {
     const decodedText = decode.getDecodedString(userData);
-    webXpath.typeTextByXpath(elementIdentifier, 'id', decodedText);
+    webXpath.typeTextByXpath(locatorIdentifier, 'id', decodedText);
   } catch (error) {
-    cy.log('Unable to type in input field' + error);
-    throw new Error('The condition was not met!');
+    throw new Error('Expectation unable to type in input field' +error);
   }
 });
 
-Then('user should navigate to the {string}', (url) => {
+Then('user should navigate to the {string}', (urlIdentifier) => {
   try {
-    const actions = new GenericActions();
-    actions.checkUrl(Urls[url]);
+    actions.checkUrl(Urls[urlIdentifier]);
   } catch (error) {
-    cy.log('not navigated to particular url' + error);
-    throw new Error('The condition was not met!');
+    throw new Error('Expectation not navigated to particular page' +error);
   }
 });
 

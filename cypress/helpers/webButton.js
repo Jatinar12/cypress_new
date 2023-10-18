@@ -2,33 +2,43 @@ import WebElement from './webElement';
 const webElement = new WebElement();
 
 class WebButton {
-  click(elementIdentifier) {
-    webElement.getWebElement(elementIdentifier).click().then(function() {
-      cy.log('The element got clicked.' + elementIdentifier );
+  click(locatorIdentifier) {
+    webElement.getWebElement(locatorIdentifier).click().then(function() {
+      return true;
+    }, function (error) {
+      return false;
     });
   }
 
-  multipleClick(elementIdentifier) {
-    webElement.getWebElement(elementIdentifier).click({multiple: true}).then(function() {
-      cy.log('The element got clicked.');
+  multipleClick(locatorIdentifier) {
+    webElement.getWebElement(locatorIdentifier).click({multiple: true}).then(function() {
+      return true;
+    }, function (error) {
+      return false;
     });
   }
 
-  focusClick(elementIdentifier) {
-    webElement.getWebElement(elementIdentifier).click({force: true}).then(function() {
-      cy.log('The element got clicked.');
+  focusClick(locatorIdentifier) {
+    webElement.getWebElement(locatorIdentifier).click({force: true}).then(function() {
+      return true;
+    }, function (error) {
+      return false;
     });
   }
 
-  realclick(elementIdentifier) {
-    webElement.getWebElement(elementIdentifier).realClick().then(function() {
-      cy.log('The element got clicked.');
+  realclick(locatorIdentifier) {
+    webElement.getWebElement(locatorIdentifier).realClick().then(function() {
+      return true;
+    }, function (error) {
+      return false;
     });
   }
 
-  check(elementIdentifier) {
-    webElement.getWebElement(elementIdentifier).check().then(function() {
-      cy.log('The element got checked');
+  check(locatorIdentifier) {
+    webElement.getWebElement(locatorIdentifier).check().then(function() {
+      return true;
+    }, function (error) {
+      return false;
     });
   }
 }

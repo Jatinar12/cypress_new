@@ -1,6 +1,6 @@
 Feature: Sidebar Functionality
 
-    @SIFU001 @MYD-336 @Regression @Sanity @NotAutomated @Sidebar
+    # @SIFU001 @MYD-336 @Regression @Sanity @NotAutomated @Sidebar
     Scenario Outline: Checking the functionality of sidebar when patient does not logs in
         Given user navigates to the "<Page Type>" page
         When user clicks on the "<Item>" field
@@ -22,7 +22,7 @@ Feature: Sidebar Functionality
             | PATIENT | Homepage  | My Appointments  | My Appointments               |
             | PATIENT | Homepage  | Account Settings | My Profile                    |
 
-    @SIFU003 @MYD-336 @Regression @NotAutomated @Patient @Sidebar
+    # @SIFU003 @MYD-336 @Regression @NotAutomated @Patient @Sidebar
     Scenario Outline: Patient sidebar- Checking the functionality of account settings
         Given user logs in with "<Role>" credentials
         When user clicks on the "<Item>" field
@@ -53,4 +53,3 @@ Feature: Sidebar Functionality
         Examples:
             | Role   | Page Type | Item           | Sub Item       | Element                |
             | DOCTOR | Homepage  | Doctor Profile | Qualifications | My Qualifications,Edit |
-

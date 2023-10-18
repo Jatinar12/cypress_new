@@ -24,7 +24,7 @@ async function setupNodeEvents(on, config) {
 module.exports = defineConfig({
   e2e: {
     setupNodeEvents, specPattern: 'cypress/e2e/features/*.feature',
-    baseUrl: 'http://my-doctors.net/',
+    baseUrl: 'https://www.google.com/',
     chromeWebSecurity: false,
     chromeWebSecurity: false,
     viewportHeight: 900,

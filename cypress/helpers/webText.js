@@ -3,87 +3,75 @@ const webElement = new WebElement();
 
 
 class WebText {
-  getText(elementIdentifier) {
-    webElement.getWebElement(elementIdentifier).invoke('text').then(function(text) {
+  getText(locatorIdentifier) {
+    webElement.getWebElement(locatorIdentifier).invoke('text').then(function(text) {
       return new Promise(function(resolve, reject) {
-        cy.log('The text of element is captured which is: ' + elementIdentifier);
         resolve(text);
       });
     });
   }
 
 
-  shouldHaveText(elementIdentifier, text) {
-    cy.get(elementIdentifier).should('have.text', text).then(function(text) {
-      cy.log('The element is have: ' + text);
+  shouldHaveText(locatorIdentifier, text) {
+    cy.get(locatorIdentifier).should('have.text', text).then(function(text) {
+      return true;
     }, function(err) {
-      cy.log('--->Error: The element dosn\'t have text due to: ' + err);
+      return false;
     });
   }
 
 
-  shouldHaveValue(elementIdentifier, value) {
-    cy.get(elementIdentifier).should('have.value', value).then(function(text) {
-      cy.log('The element have value: ' + value);
+  shouldHaveValue(locatorIdentifier, value) {
+    cy.get(locatorIdentifier).should('have.value', value).then(function(text) {
+      return true;
     }, function(err) {
-      cy.log('--->Error: The element dosn\'t have value due to: ' + err);
+      return false;
     });
   }
 
-  shouldContainText(elementIdentifier, text) {
-    cy.get(elementIdentifier).should('contain', text).then(function(text) {
-      cy.log('The element contain: ' + text);
+  shouldContainText(locatorIdentifier, text) {
+    cy.get(locatorIdentifier).should('contain', text).then(function(text) {
+      return true;
     }, function(err) {
-      cy.log('--->Error: The element dosn\'t contain text due to: ' + err);
+      return false;
     });
-  }
+  }data
 
 
-  verifyExactText(elementIdentifier, expectedtext) {
+  verifyExactText(locatorIdentifier, expectedtext) {
     try {
-      if (elementIdentifier.should('have.text', expectedtext)) {
-        cy.log('The Expected Text matches the actual ' + expectedtext);
-      } else {
-        cy.log('The Expected Text does not matches the actual ' + expectedtext);
+      if (locatorIdentifier.should('have.text', expectedtext)) {
+        return true;
       }
     } catch (err) {
-      cy.log('There was an Exception in the comparison of Text');
+      return false;
     }
   }
 
-  verifyPartialText(elementIdentifier, expectedtext) {
+  verifyPartialText(locatorIdentifier, expectedtext) {
     try {
-      if (elementIdentifier.should('contain', expectedtext)) {
-        cy.log('The Expected Text matches the actual ' + expectedtext);
-      } else {
-        cy.log('The Expected Text does not matches the actual ' + expectedtext);
-      }
+      locatorIdentifier.should('contain', expectedtext);
+      return true;
     } catch (err) {
-      cy.log('There was an Exception in the comparison of Text');
+      return false;
     }
   }
 
-  verifyExactAttribute(elementIdentifier, attribute, value) {
+  verifyExactAttribute(locatorIdentifier, attribute, value) {
     try {
-      if (elementIdentifier.invoke('attr', attribute).should('equal', value)) {
-        cy.log('The expected attribute: ' + attribute + ' value matches the actual ' + value);
-      } else {
-        cy.log('The expected attribute: ' + attribute + ' value does not matches the actual ' + value);
-      }
-    } catch (err) {
-      cy.log('There was an Exception in the comparison of attibute value');
+      locatorIdentifier.invoke('attr', attribute).should('equal', value);
+      return true;
+    } catch (error) {
+       return false;
     }
   }
 
-  verifyPartialAttribute(elementIdentifier, attribute, value) {
+  verifyPartialAttribute(locatorIdentifier, attribute, value) {
     try {
-      if (elementIdentifier.invoke('attr', attribute).should('contain', value)) {
-        cy.log('The expected attribute: ' + attribute + ' value matches the actual ' + value);
-      } else {
-        cy.log('The expected attribute: ' + attribute + ' value does not matches the actual ' + value);
-      }
-    } catch (err) {
-      cy.log('There was an Exception in the comparison of attibute value');
+      locatorIdentifier.invoke('attr', attribute).should('contain', value);
+      return true;
+    } catch (error) {
+      return false;
     }
   }
 }

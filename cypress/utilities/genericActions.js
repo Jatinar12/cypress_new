@@ -4,24 +4,22 @@ class GenericActions {
   }
 
   wait(time) {
-    cy.wait(time).then(function() {
-      cy.log('Wait for' + time);
-    });
-  }
+    resolve => setTimeout(resolve, time)
+    };
 
   checkUrl(url) {
     cy.url().should('contains', url).then( function() {
-      cy.log('--> Successs: Current url contains the expected url');
-    }), function(err) {
-      cy.log('---> Error: The url contains:' + url + 'does not include the current url due to: ' + err);
+      return true;
+    }), function(error) {
+      return false;
     };
   }
 
   refresh() {
     cy.reload().then(function() {
-      cy.log('--->Success: The page got refreshed');
+      return true;
     }, function(err) {
-      cy.log('--->Error: The page: ' + browser.getCurrentUrl() + ' is not refreshed due to: ' + err);
+      return false;
     });
   }
 
@@ -29,25 +27,27 @@ class GenericActions {
   setScrollPageDown() {
     cy.scrollTo(0, 800).then(function() {
       cy.get('.sidebar').scrollTo('bottom');
-      cy.log('++++++SCROLLED Down+++++');
+      return true;
+    }, function(error) {
+      return false;
     });
   }
 
 
   getTitle() {
     cy.title().then(function(text) {
-      cy.log('--->Success: The title of of the Webpage is captured: ' + text);
       return text;
-    }, function(err) {
-      cy.log('--->Error: The title of of the Webpage is not captured: due to: ' + err);
+    }, function(error) {
+      cy.log('--->Error: The title of of the Webpage is not captured: due to: ' + error);
     });
   }
 
   clearCookies() {
     try {
       cy.clearCookies();
+      return true;
     } catch (err) {
-      cy.log('The Failed To clear the Catch Data');
+      return false;
     }
   }
 
@@ -98,7 +98,6 @@ class GenericActions {
     for (let i= 0; i <= 8; i++) {
       mobileNumber += num.charAt(Math.floor(Math.random() * num.length));
     }
-
     return mobileNumber;
   }
 

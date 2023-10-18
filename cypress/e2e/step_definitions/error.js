@@ -14,11 +14,15 @@ const webXpath = new WebXpath();
 
 
 Given('user logs in with {string} credentials', (role) => {
+  try {
   const decodedEmail = decryption.getDecodedString(`${role}_EMAIL`);
   const decodedPassword = decryption.getDecodedString(`${role}_PASSWORD`);
   actions.visit('/');
-  webButton.click(commonLocators['login button']);
+  webButton.click(commonLocators['loginButton']);
   webXpath.typeTextByXpath(`emailOrMobile`, 'id', decodedEmail);
   webXpath.typeTextByXpath(`password`, 'id', decodedPassword);
-  webButton.click(commonLocators['submit button']);
+  webButton.click(commonLocators['submitButton']);
+  } catch (error) {
+    throw new Error('Expectation unable to naviagte to particular page'+ error);
+  }
 });

@@ -1,6 +1,6 @@
 Feature: Patient Registration
 
-  @PASI001 @Sanity @NotAutomated @Regression @PatientRegistration
+  # @PASI001 @Sanity @NotAutomated @Regression @PatientRegistration
   Scenario Outline:User navigates to the Patient Registration page and signs up
     Given user navigates to the "<Page type>" page
     When user clicks on the "Login" field

@@ -16,7 +16,7 @@ Feature: Search Bar
         Given user navigates to the "<Page Type>" page
         When user clicks on the "Specialities" field
         And user enters value "<value>" in the "Search a Speciality-placeholder" input field
-        And user clicks on the "logo"
+        And user clicks on the "submitButton"
         And user clicks on the "Dental-title" field
         Then the corresponding page appears with the expected elements: "<Item>"
         Examples:

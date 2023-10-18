@@ -8,19 +8,35 @@ const webButton = new WebButton();
 const webElement = new WebElement();
 const webText = new WebText();
 
-Given('user can view list of {string}', (elementIdentifier) => {
-  webElement.shouldBeVisible(commonLocators[elementIdentifier]);
+Given('user can view list of {string}', (locatorIdentifier) => {
+  try {
+  webElement.shouldBeVisible(commonLocators[locatorIdentifier]);
+  } catch(error) {
+    throw new Error('Expectation element is not visible' +error);
+  }
 });
 
-When('user clicks on {string} {string}', function(elementIdentifier, pageNumber) {
-  const identifier = `${commonLocators[elementIdentifier]}:contains("${pageNumber}")`;
-  webButton.click(identifier);
+When('user clicks on {string} {string}', function(locatorIdentifier, pagination) {
+  try {
+  const locator = `${commonLocators[locatorIdentifier]}:contains("${pagination}")`;
+  webButton.click(locator);
+  } catch (error) {
+    throw new Error('Expectation unable to click an element' +error);
+  }
 });
 
-When('User is on {string} page of {string}', (text, elementIdentifier) => {
-  webText.getText(commonLocators[elementIdentifier], text);
+When('User is on {string} page of {string}', (text, locatorIdentifier) => {
+  try {
+  webText.getText(commonLocators[locatorIdentifier], text);
+  } catch (error) {
+    throw new Error('Expectation element is not present' + error);
+  }
 });
 
-When('user clicks on {string} page of {string}', (text, elementIdentifier) => {
-  webButton.click(commonLocators[elementIdentifier], text);
+When('user clicks on {string} page of {string}', (text, locatorIdentifier) => {
+  try {
+  webButton.click(commonLocators[locatorIdentifier], text);
+  } catch (error) {
+    throw new Error('Expectation unable to click an element'+ error);
+  }
 });

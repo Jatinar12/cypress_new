@@ -1,37 +1,40 @@
 class WebXpath {
-  setXpathValue(word, type='visibleText') {
-    let xpathString = '';
-
-    if (type != 'visibleText') {
-      xpathString = `//*[@${type}='${word}']`;
-    } else if (type='visibleText') {
-      xpathString = `//*[contains(text(),'${word}')]`;
-    }
-    return xpathString;
+  setXpathValue(word, type) {
+   return `//*[contains(text(),'${word}')] |  //*[@${type}='${word}']`;
   }
 
-  clickByXpath(elementIdentifier, type) {
-    const getXpathValue = this.setXpathValue(elementIdentifier, type);
+  clickByXpath(locatorIdentifier, type) {
+    const getXpathValue = this.setXpathValue(locatorIdentifier, type);
     cy.xpath(getXpathValue).click().then(function() {
-      cy.log('The element got clicked.');
-    }, function(err) {
-      cy.log('--->Error: The element couldn\'t get clicked due to: ' + err);
+      return true;
+    }, function(error) {
+      return false;
     });
   }
 
-  typeTextByXpath(elementIdentifier, type, word) {
-    const getXpathValue = this.setXpathValue(elementIdentifier, type);
+  typeTextByXpath(locatorIdentifier, type, word) {
+    const getXpathValue = this.setXpathValue(locatorIdentifier, "id");
     cy.xpath(getXpathValue).clear().type(word).then(function() {
-      cy.log('Typing of the field with value: ' + word);
+      return true;
+    }, function(error) {
+      return false;
     });
   }
-
-  shouldContainTextByXpath(text) {
+  
+  typeTextPresent(text) {
     const getXpathValue = this.setXpathValue(text);
     cy.xpath(getXpathValue).should('contain', text).then(function() {
-      cy.log('The element is have: ' + text);
-    }, function(err) {
-      cy.log('--->Error: The element dosn\'t have text due to: ' + err);
+     return true;
+    }, function(error) {
+      return false;
+    });
+  }
+
+  selectDropDownUsingTextByXpath(locatorIdentifier, text) {
+    cy.xpath(locatorIdentifier).select(text).then(function() {
+      return true;
+    }, function(error) {
+      return false;
     });
   }
 }

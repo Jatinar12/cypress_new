@@ -3,43 +3,43 @@ const webElement = new WebElement();
 
 
 class WebTextBox {
-  clearText(elementIdentifier) {
-    webElement.getWebElement(elementIdentifier).clear().then(function() {
-      cy.log(' Clearing of field !!!');
-    }, function(err) {
-      cy.log('--->Error: Clearing did not perform due to: ' + err);
+  clearText(locatorIdentifier) {
+    webElement.getWebElement(locatorIdentifier).clear().then(function() {
+      return true;
+    }, function(error) {
+      return false;
     });
   }
 
-  typeText(elementIdentifier, data) {
-    webElement.getWebElement(elementIdentifier).type(data).then(function() {
-      cy.log('Typing of the field with value: ' + data);
-    }, function(err) {
-      cy.log('--->Error: Typing of the field with value:' + data + ' was not done due to: ' + err);
+  typeText(locatorIdentifier, text) {
+    webElement.getWebElement(locatorIdentifier).type(text).then(function() {
+      return true;
+    }, function(error) {
+      return false;
     });
   }
 
-  typeTextWithoutClearingExistingText(elementIdentifier, data) {
-    elementIdentifier.type(data).then(function() {
-      cy.log('Typing of the field with value: ' + data);
-    }, function(err) {
-      cy.log(colors.red('--->Error: Typing of the field with value:' + data + ' was not done due to: ' + err));
+  typeTextWithoutClearingExistingText(locatorIdentifier, text) {
+    locatorIdentifier.type(text).then(function() {
+      return true;
+    }, function(error) {
+      return false;
+    });
+  }
+  data
+  typeTextDown(locatorIdentifier) {
+    webElement.getWebElement(locatorIdentifier).type('{downarrow}').then(function() {
+      return true;
+    }, function(error) {
+      return false;
     });
   }
 
-  typeTextDown(elementIdentifier, data) {
-    webElement.getWebElement(elementIdentifier).type('{downarrow}').then(function() {
-      cy.log('Typing of the field with value: ' + data);
-    }, function(err) {
-      cy.log('--->Error: Typing of the field with value:' + data + ' was not done due to: ' + err);
-    });
-  }
-
-  typeTextEnter(elementIdentifier, data) {
-    webElement.getWebElement(elementIdentifier).type('{enter}').then(function() {
-      cy.log('Typing of the field with value: ' + data);
-    }, function(err) {
-      cy.log('--->Error: Typing of the field with value:' + data + ' was not done due to: ' + err);
+  typeTextEnter(locatorIdentifier) {
+    webElement.getWebElement(locatorIdentifier).type('{enter}').then(function() {
+      return true;
+    }, function(error) {
+      return false;
     });
   }
 }

@@ -1,7 +1,17 @@
   {
-    "login button" : "xpath, //*[@type='button']",
-    "submit button" : "xpath, (//*[@type='submit'])[2]",
-    "logo" : "xpath, (//*[@type='submit'])[2]"
-
+    "loginButton" : "xpath, //*[@type='button']",
+    "submitButton" : "xpath, (//*[@type='submit'])[2]",
+    "disabled" : "xpath, //*[@aria-label='Go to previous page']",
+    "enabled" : "xpath, //*[text()='2']",
+    "specialityFilterField" : "xpath, (//*[@class='MuiFormControl-root'])[2]",
+    "specialityFilter" : "css, li[data-value='8']",
+    "specialityCard" : "xpath, (//*[@class='MuiAvatar-img'])[3]",
+    "doctorCards" : "css, [class='MuiCardContent-root']",
+    "dashboard": "xpath, (//*[@type='button'])[16]",
+    "providedEmail" : "xpath, (//*[@type='text'])[3]",
+    "updatePassword" : "xpath, (//*[@class='MuiInputBase-input MuiOutlinedInput-input'])[1]",
+    "select": "text, (//select)[data]",
+    "button" : "text, (//button)[data]",
+    "searchbar" : "xpath, //*[@class='gLFyf']"
   }
 

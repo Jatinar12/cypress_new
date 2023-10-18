@@ -13,44 +13,38 @@ const webXpath = new WebXpath();
 const actions = new GenericActions();
 const webElement = new WebElement();
 
-Given('user navigates to the {string} page', (url)=> {
+Given('user navigates to the {string} page', (urlIdentifier)=> {
   try {
-    actions.wait(2000);
-    actions.visit(Urls[url]);
+    actions.wait(1000);
+    actions.visit(Urls[urlIdentifier]);
   } catch (error) {
-    cy.log('not able to click on the element' + error);
-    throw new Error('The condition was not met!');
+    throw new Error('Expectation: Unable to navigate' + error);
   }
 });
 
-When('user clicks on the {string}', (elementIdentifier) => {
+When('user clicks on the {string}', (locatorIdentifier) => { 
   try {
-    actions.wait(3000);
-    webButton.click(commonLocators[elementIdentifier]);
+    actions.wait(1000);
+    webButton.click(commonLocators[locatorIdentifier]);
   } catch (error) {
-    cy.log('not able to click on the button' + error);
-    throw new Error('The condition was not met!');
+    throw new Error('Expectation: Unable to click an element' +error);
   }
 });
 
-// When('user clicks on the {string} field', (elementIdentifier) => {
-//   const ele = elementIdentifier.split('-');
-//   try {
-//     actions.wait(3000);
-//     // webButton.click(commonLocators[elementIdentifier]);
-//   } catch (error) {
-//     cy.log('not able to click on the button' + error);
-//     throw new Error('The condition was not met!');
-//   }
-// });
-
-When('user enters value {string} in the {string} input field', (text, elementIdentifier) => {
-  const ele = elementIdentifier.split('-');
+When('user enters value {string} in the {string} input field', (text, locatorIdentifier) => {
+  const selector = locatorIdentifier.split('-');
   try {
-    webXpath.typeTextByXpath(ele[0], ele[1], text);
+    webXpath.typeTextByXpath(selector[0], typeIdentifier[1], text);
   } catch (error) {
-    cy.log('not able to click on the button' + error);
-    throw new Error('The condition was not met!');
+    throw new Error('Expectation: Unable to type an text'+ error);
+  }
+});
+
+When('user enters value {string} in the {string} field', (text, locatorIdentifier) => {
+  try {
+    webTextBox.typeText(commonLocators[locatorIdentifier], text);
+  } catch (error) {
+    throw new Error('Expectation unable to type' + error);
   }
 });
 
@@ -58,44 +52,43 @@ Then('user can view message {string}', (text) => {
   try {
     webXpath.shouldContainTextByXpath(text);
   } catch (error) {
-    cy.log('not able to click on the button' + error);
-    throw new Error('The condition was not met!');
+    throw new Error('Expectation unable to see message' + error);
   }
 });
 
-Given('the corresponding page appears with the expected elements: {string}', (elementIdentifier) => {
-  const text = elementIdentifier.toString();
-  const textArray = text.split(',');
-  for (let count = 0; count < textArray.length; count++) {
-    webXpath.shouldContainTextByXpath(textArray[count]);
-  }
-});
-
-Given('user is on {string} page', (Page) => {
+Given('the corresponding page appears with the expected elements: {string}', (locatorIdentifier) => {
   try {
-    webElement.shouldBeVisible(Page);
+  const selector = locatorIdentifier.split(',');
+  for (let count = 0; count < selector.length; count++) {
+    webXpath.shouldContainTextByXpath(selector[count]);
+  }
+} catch (error) {
+  throw new Error('Expectation: element is not visible' +error);
+}
+});
+
+Given('user is on {string} page', (pagination) => {
+  try {
+    webElement.shouldBeVisible(pagination);
   } catch (error) {
-    cy.log('not able to click on the button' + error);
-    throw new Error('The condition was not met!');
+    throw new Error('Expectation Not present on the current'+ error);
   }
 });
 
-Given('{string} per page is {string}', (elementIdentifier, text) => {
+Given('{string} per page is {string}', (locatorIdentifier, text) => {
   try {
-    webElement.shouldBeVisible(commonLocators[elementIdentifier], text);
+    webElement.shouldBeVisible(commonLocators[locatorIdentifier], text);
   } catch (error) {
-    cy.log('not able to click on the button' + error);
-    throw new Error('The condition was not met!');
+    throw new Error('Expectation not able to see pagination' +error);
   }
 });
 
-When('user clicks on the {string} field', (elementIdentifier) => {
-  const ele = elementIdentifier.split('-');
+When('user clicks on the {string} field', (locatorIdentifier) => {
+  const selector = locatorIdentifier.split('-');
   try {
-    webXpath.clickByXpath(ele[0], ele[1]);
+    webXpath.clickByXpath(selector[0], selector[1]);
   } catch (error) {
-    cy.log('not able to click on the button' + error);
-    throw new Error('The condition was not met!');
+    throw new Error('Expectation Unable to click element by xpath'+ error);
   }
 });
 
@@ -103,7 +96,6 @@ Then('user can view {string}', (text) => {
   try {
     webXpath.shouldContainTextByXpath(text);
   } catch (error) {
-    cy.log('not able to click on the button' + error);
-    throw new Error('The condition was not met!');
+    throw new Error('Expectation unable to locate an element'+ error);
   }
 });

@@ -1,124 +1,120 @@
 class WebElement {
-  elementCount(elementIdentifier) {
+  countElement(locatorIdentifier) {
     try {
-      return elementIdentifier.its('length').then(function(size) {
+      return locatorIdentifier.its('length').then(function(size) {
         return new Promise(function(resolve, reject) {
           resolve(size);
         });
       });
     } catch (err) {
-      cy.log('count of element cannot be found');
+      return false;
     }
   }
 
-  elementIsPresent(elementIdentifier) {
+  validateElement(locatorIdentifier) {
     try {
-      elementIdentifier.should('exist');
-    } catch (err) {
-      cy.log('The Element: ' + elementIdentifier + ' is not Present in the webpage.');
-      cy.log('There was an Exception in checking whether the element is Present.');
+      locatorIdentifier.should('exist');
+      return true;
+    } catch (error) {
+      return false;
     }
   }
 
-  elementIsNotPresent(elementIdentifier) {
+  validateElementAbsence(locatorIdentifier) {
     try {
-      if (elementIdentifier.should('not.exist')) {
-        cy.log('The Element: ' + elementIdentifier + ' is Not Present in the webpage.');
-      } else {
-        cy.log('The Element: ' + elementIdentifier + ' is Present in the webpage.');
-      }
-    } catch (err) {
-      cy.log('There was an Exception in checking whether the element is Present.');
+      locatorIdentifier.should('not.exist');
+      return true;
+    }
+    catch (error) {
+      return false;
     }
   }
 
-  elementIsDisplayed(elementIdentifier) {
+  elementVisibility(locatorIdentifier) {
     try {
-      if (elementIdentifier.should('be.visible')) {
-        cy.log('The Element: ' + elementIdentifier + ' is Displyaed in the webpage.');
-      } else {
-        cy.log('The Element: ' + elementIdentifier + ' is not Displayed in the webpage.');
-      }
-    } catch (err) {
-      cy.log('There was an Exception in checking whether the element is Displayed.');
+      locatorIdentifier.should('be.visible');
+      return true;
+    }
+    catch (error) {
+      return false;
     }
   }
 
-  elementIsNotDisplayed(elementIdentifier) {
+  elementNotVisible(locatorIdentifier) {
     try {
-      if (elementIdentifier.should('not.be.visible')) {
-        cy.log('The Element: ' + elementIdentifier + ' is not Displyaed in the webpage.');
-      } else {
-        cy.log('The Element: ' + elementIdentifier + ' is Displayed in the webpage.');
-      }
-    } catch (err) {
-      cy.log('There was an Exception in checking whether the element is Displayed.');
+      locatorIdentifier.should('not.be.visible');
+      return true;
+    }
+    catch (error) {
+      return false;
     }
   }
 
-  elementIsEnabled(elementIdentifier) {
+  validateWebElement(locatorIdentifier) {
     try {
-      if (elementIdentifier.should('not.be.disabled')) {
-        cy.log('The Element: ' + elementIdentifier + ' is Displyaed in the webpage.');
-      } else {
-        cy.log('The Element: ' + elementIdentifier + ' is not Displayed in the webpage.');
-      }
-    } catch (err) {
-      cy.log('There was an Exception in checking whether the element is Displayed.');
+      locatorIdentifier.should('not.be.disabled');
+      return true;
+    } catch (error) {
+      return false;
     }
   }
 
-  elementIsNotEnabled(elementIdentifier) {
+  validateWebElementAbsence(locatorIdentifier) {
     try {
-      if (elementIdentifier.should('be.disabled')) {
-        cy.log('The Element: ' + elementIdentifier + ' is Displayed in the webpage.');
-      } else {
-        cy.log('The Element: ' + elementIdentifier + ' is not Displayed in the webpage.');
-      }
-    } catch (err) {
-      cy.log('There was an Exception in checking whether the element is Displayed.');
+      locatorIdentifier.should('be.disabled');
+      return true;
+    } catch (error) {
+      return false;
     }
   }
 
 
-  shouldHaveCSS(elementIdentifier, cssname, value) {
-    elementIdentifier.should('have.css', cssname, value).then(function(text) {
-      cy.log('The element have css value: ' + value);
-    }, function(err) {
-      cy.log('--->Error: The element dosn\'t have css expected css value due to: ' + err);
+  shouldHaveCSS(locatorIdentifier, attribute, value) {
+    locatorIdentifier.should('have.css', attribute, value).then(function(text) {
+      return true;
+    }, function(error) {
+      return false;
     });
   }
 
-  getAttribute(elementIdentifier, attribute) {
-    cy.get(elementIdentifier).invoke('attr', attribute).then(function(text) {
-      cy.log('The attribute of element is captured which is: ' + text);
+  getAttribute(locatorIdentifier, attribute) {
+    cy.get(locatorIdentifier).invoke('attr', attribute).then(function(text) {
       return text;
-    }, function(err) {
-      cy.log('--->Error: The attribute of the element couldn\'t be captured due to: ' + err);
+    }, function(error) {
+      cy.log('--->Error: The attribute of the element couldn\'t be captured due to: ' + error);
     });
   }
 
   drag(sourceElement, targetElement) {
     cy.get(sourceElement).drag(targetElement).then(function() {
-      cy.log('Element is dragged from ' + sourceElement + ' to ' + targetElement);
-    }, function(err) {
-      cy.log('--->Error: Unable to drag Element due to' + err);
+      return true;
+    }, function(error) {
+      return false;
     });
   }
 
-  shouldBeVisible(elementIdentifier) {
-    this.getWebElement(elementIdentifier).should('be.visible').then(function() {
-      cy.log('Element is visible');
+  shouldBeVisible(locatorIdentifier) {
+    this.getWebElement(locatorIdentifier).should('be.visible').then(function() {
+      return true;
     }), function(err) {
-      cy.log('-->Error: Element couldn\'t be visible');
+      return false;
     };
   }
 
-  getWebElement(identifierValue) {
-    const locators = identifierValue.split(',');
-    switch (locators[0]) {
-      case 'xpath': return cy.xpath(locators[1]);
-      case 'css': return cy.get(locators[1]);
+  shouldBeVisible1(locatorIdentifier) {
+    cy.xpath(locatorIdentifier).should('be.visible').then(function() {
+      return true;
+    }), function(err) {
+      return false;
+    };
+  }
+
+  getWebElement(locatorIdentifier) {
+    const selector = locatorIdentifier.split(',');
+    switch (selector[0]) {
+      case 'xpath': return cy.xpath(selector[1]);
+      case 'css': return cy.get(selector[1]);
+      case 'text': return selector[1];
     };
   }
 }
