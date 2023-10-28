@@ -24,10 +24,7 @@ async function setupNodeEvents(on, config) {
 module.exports = defineConfig({
   defaultCommandTimeout: 500,
   e2e: {
-    setupNodeEvents(on, config) {
-      // https://github.com/bahmutov/cypress-failed-log
-      require('cypress-failed-log/on')(on)
-    }, specPattern: 'cypress/e2e/features/*.feature',
+    setupNodeEvents, specPattern: 'cypress/e2e/features/*.feature',
     baseUrl: 'http://my-doctors.net/',
     chromeWebSecurity: false,
     chromeWebSecurity: false,
