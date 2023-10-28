@@ -5,7 +5,7 @@ const webElement = new WebElement();
 class WebText {
   getText(locatorIdentifier) {
     webElement.getWebElement(locatorIdentifier).invoke('text').then(function(text) {
-      return new Promise(function(resolve, reject) {
+      return new Promise(function(resolve) {
         resolve(text);
       });
     });
@@ -13,66 +13,33 @@ class WebText {
 
 
   shouldHaveText(locatorIdentifier, text) {
-    cy.get(locatorIdentifier).should('have.text', text).then(function(text) {
-      return true;
-    }, function(err) {
-      return false;
-    });
+    cy.get(locatorIdentifier).should('have.text', text);
   }
 
 
   shouldHaveValue(locatorIdentifier, value) {
-    cy.get(locatorIdentifier).should('have.value', value).then(function(text) {
-      return true;
-    }, function(err) {
-      return false;
-    });
+    cy.get(locatorIdentifier).should('have.value', value);
   }
 
   shouldContainText(locatorIdentifier, text) {
-    cy.get(locatorIdentifier).should('contain', text).then(function(text) {
-      return true;
-    }, function(err) {
-      return false;
-    });
-  }data
+    cy.get(locatorIdentifier).should('contain', text);
+  }
 
 
   verifyExactText(locatorIdentifier, expectedtext) {
-    try {
-      if (locatorIdentifier.should('have.text', expectedtext)) {
-        return true;
-      }
-    } catch (err) {
-      return false;
-    }
+   locatorIdentifier.should('have.text', expectedtext);
   }
 
   verifyPartialText(locatorIdentifier, expectedtext) {
-    try {
       locatorIdentifier.should('contain', expectedtext);
-      return true;
-    } catch (err) {
-      return false;
-    }
   }
 
   verifyExactAttribute(locatorIdentifier, attribute, value) {
-    try {
       locatorIdentifier.invoke('attr', attribute).should('equal', value);
-      return true;
-    } catch (error) {
-       return false;
-    }
   }
 
   verifyPartialAttribute(locatorIdentifier, attribute, value) {
-    try {
       locatorIdentifier.invoke('attr', attribute).should('contain', value);
-      return true;
-    } catch (error) {
-      return false;
-    }
   }
 }
 export default WebText;

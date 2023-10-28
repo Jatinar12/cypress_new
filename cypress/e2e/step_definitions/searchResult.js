@@ -16,7 +16,7 @@ Given('{string} keyword is {string}', (locatorIdentifier, text) => {
   try {
   webTextBox.typeText(commonLocators[locatorIdentifier], text);
   } catch (error) {
-    throw new Error('Expectation Unable to type an element'+ error);
+    throw new Error('Expectation Unable to type an element' +" "+ error);
   }
 });
 
@@ -24,7 +24,7 @@ Given('search {string} is clicked', (locatorIdentifier) => {
   try {
   webButton.click(commonLocators[locatorIdentifier]);
   } catch (error) {
-    throw new Error('Expectation unable to click' +error);
+    throw new Error('Expectation unable to click' +" "+ error);
   }
 });
 
@@ -34,7 +34,7 @@ Given('{string} is {string}', (locatorIdentifier, text) => {
   webTextBox.typeTextDown(commonLocators[locatorIdentifier]);
   webTextBox.typeTextEnter(commonLocators[locatorIdentifier]);
   } catch {error} {
-    throw new Error('Expectation unable to locate'+ error);
+    throw new Error('Expectation unable to locate' +" "+ error);
   }
 });
 
@@ -42,7 +42,7 @@ Then('{string} should see {string}', (locatorIdentifier, text) => {
   try {
   webElement.shouldBeVisible(commonLocators[locatorIdentifier], text);
   } catch (error) {
-    throw new Error('Expectation: Element is not visible' +error);
+    throw new Error('Expectation: Element is not visible'+" "+ error);
   }
 });
 
@@ -51,7 +51,7 @@ Then('result page is move to {string} page', (urlIdentifier) => {
   const decordedUrl = decryption.getDecodedString(urlIdentifier);
   actions.checkUrl(decordedUrl);
   } catch (error) {
-    throw new Error('Expectation unable to decode an email' +error);
+    throw new Error('Expectation unable to decode an email' +" "+ error);
   }
 });
 
@@ -59,6 +59,6 @@ Then('Result contain {string} {string}', (locatorIdentifier, text) => {
   try {
   webElement.shouldBeVisible(commonLocators[locatorIdentifier], text);
   } catch (error) {
-    throw new Error('Expectation: Element is not visible' + error);
+    throw new Error('Expectation: Element is not visible' +" "+ error);
   }
 });

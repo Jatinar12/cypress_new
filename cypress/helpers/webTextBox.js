@@ -4,43 +4,23 @@ const webElement = new WebElement();
 
 class WebTextBox {
   clearText(locatorIdentifier) {
-    webElement.getWebElement(locatorIdentifier).clear().then(function() {
-      return true;
-    }, function(error) {
-      return false;
-    });
+    webElement.getWebElement(locatorIdentifier).clear();
   }
 
   typeText(locatorIdentifier, text) {
-    webElement.getWebElement(locatorIdentifier).type(text).then(function() {
-      return true;
-    }, function(error) {
-      return false;
-    });
+    webElement.getWebElement(locatorIdentifier).type(text);
   }
 
   typeTextWithoutClearingExistingText(locatorIdentifier, text) {
-    locatorIdentifier.type(text).then(function() {
-      return true;
-    }, function(error) {
-      return false;
-    });
+    locatorIdentifier.type(text);
   }
-  data
+  
   typeTextDown(locatorIdentifier) {
-    webElement.getWebElement(locatorIdentifier).type('{downarrow}').then(function() {
-      return true;
-    }, function(error) {
-      return false;
-    });
+    webElement.getWebElement(locatorIdentifier).type('{downarrow}');
   }
 
   typeTextEnter(locatorIdentifier) {
-    webElement.getWebElement(locatorIdentifier).type('{enter}').then(function() {
-      return true;
-    }, function(error) {
-      return false;
-    });
+    webElement.getWebElement(locatorIdentifier).type('{enter}');
   }
 }
 

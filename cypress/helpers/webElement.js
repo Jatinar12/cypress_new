@@ -1,112 +1,56 @@
 class WebElement {
   countElement(locatorIdentifier) {
-    try {
       return locatorIdentifier.its('length').then(function(size) {
-        return new Promise(function(resolve, reject) {
+        return new Promise(function(resolve) {
           resolve(size);
         });
       });
-    } catch (err) {
-      return false;
-    }
   }
 
   validateElement(locatorIdentifier) {
-    try {
       locatorIdentifier.should('exist');
-      return true;
-    } catch (error) {
-      return false;
-    }
   }
 
   validateElementAbsence(locatorIdentifier) {
-    try {
       locatorIdentifier.should('not.exist');
-      return true;
-    }
-    catch (error) {
-      return false;
-    }
   }
 
   elementVisibility(locatorIdentifier) {
-    try {
       locatorIdentifier.should('be.visible');
-      return true;
-    }
-    catch (error) {
-      return false;
-    }
   }
 
   elementNotVisible(locatorIdentifier) {
-    try {
-      locatorIdentifier.should('not.be.visible');
-      return true;
-    }
-    catch (error) {
-      return false;
-    }
+    locatorIdentifier.should('not.be.visible');
   }
 
   validateWebElement(locatorIdentifier) {
-    try {
-      locatorIdentifier.should('not.be.disabled');
-      return true;
-    } catch (error) {
-      return false;
-    }
+    locatorIdentifier.should('not.be.disabled');
   }
 
   validateWebElementAbsence(locatorIdentifier) {
-    try {
-      locatorIdentifier.should('be.disabled');
-      return true;
-    } catch (error) {
-      return false;
-    }
+    locatorIdentifier.should('be.disabled');
   }
 
 
   shouldHaveCSS(locatorIdentifier, attribute, value) {
-    locatorIdentifier.should('have.css', attribute, value).then(function(text) {
-      return true;
-    }, function(error) {
-      return false;
-    });
+    locatorIdentifier.should('have.css', attribute, value);
   }
 
   getAttribute(locatorIdentifier, attribute) {
-    cy.get(locatorIdentifier).invoke('attr', attribute).then(function(text) {
+    cy.get(locatorIdentifier).invoke('attr', attribute);
       return text;
-    }, function(error) {
-      cy.log('--->Error: The attribute of the element couldn\'t be captured due to: ' + error);
-    });
   }
 
   drag(sourceElement, targetElement) {
-    cy.get(sourceElement).drag(targetElement).then(function() {
-      return true;
-    }, function(error) {
-      return false;
-    });
+    cy.get(sourceElement).drag(targetElement);
   }
 
   shouldBeVisible(locatorIdentifier) {
-    this.getWebElement(locatorIdentifier).should('be.visible').then(function() {
-      return true;
-    }), function(err) {
-      return false;
-    };
+    this.getWebElement(locatorIdentifier).should('be.visible');
   }
 
   shouldBeVisible1(locatorIdentifier) {
-    cy.xpath(locatorIdentifier).should('be.visible').then(function() {
-      return true;
-    }), function(err) {
-      return false;
-    };
+    cy.xpath(locatorIdentifier).should('be.visible');
   }
 
   getWebElement(locatorIdentifier) {

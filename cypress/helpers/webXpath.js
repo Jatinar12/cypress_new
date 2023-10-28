@@ -5,38 +5,24 @@ class WebXpath {
 
   clickByXpath(locatorIdentifier, type) {
     const getXpathValue = this.setXpathValue(locatorIdentifier, type);
-    cy.xpath(getXpathValue).click().then(function() {
-      return true;
-    }, function(error) {
-      return false;
-    });
+    cy.xpath(getXpathValue).click();
   }
 
   typeTextByXpath(locatorIdentifier, type, word) {
-    const getXpathValue = this.setXpathValue(locatorIdentifier, "id");
-    cy.xpath(getXpathValue).clear().type(word).then(function() {
-      return true;
-    }, function(error) {
-      return false;
-    });
+    const getXpathValue = this.setXpathValue(locatorIdentifier, type);
+    cy.log("##############################################");
+    cy.xpath(getXpathValue).type(word);
   }
   
   typeTextPresent(text) {
     const getXpathValue = this.setXpathValue(text);
-    cy.xpath(getXpathValue).should('contain', text).then(function() {
-     return true;
-    }, function(error) {
-      return false;
-    });
+    cy.xpath(getXpathValue).should('contain', text);
   }
 
   selectDropDownUsingTextByXpath(locatorIdentifier, text) {
-    cy.xpath(locatorIdentifier).select(text).then(function() {
-      return true;
-    }, function(error) {
-      return false;
-    });
+    cy.xpath(locatorIdentifier).select(text);
   }
+
 }
 
 export default WebXpath;

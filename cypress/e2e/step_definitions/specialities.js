@@ -21,7 +21,7 @@ Given('{string} {string} is {string}', (text, locator, locatorIdentifier) => {
       }
       webElement.shouldBeVisible1(new_value);
     } catch (error) {
-    throw new Error('Expectation: Element is not visible');
+    throw new Error('Expectation: Element is not visible'+" "+ error);
     }
 });
 
@@ -29,7 +29,7 @@ When('user clicks on the {string} button', (locatorIdentifier) => {
   try {
   webButton.click(commonLocators[locatorIdentifier]);
   } catch (error) {
-    throw new Error('Expectation: Unable to click' +error);
+    throw new Error('Expectation: Unable to click' +" "+ error);
   }
 });
 
@@ -38,7 +38,7 @@ Then('user is on {string} button', (locatorIdentifier) => {
   actions.wait(1000);
   webElement.shouldBeVisible(commonLocators[locatorIdentifier]);
   } catch (error) {
-    throw new Error('Expectation: Element is not visible' +error);
+    throw new Error('Expectation: Element is not visible' +" "+ error);
   }
 });
 

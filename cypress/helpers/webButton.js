@@ -3,43 +3,23 @@ const webElement = new WebElement();
 
 class WebButton {
   click(locatorIdentifier) {
-    webElement.getWebElement(locatorIdentifier).click().then(function() {
-      return true;
-    }, function (error) {
-      return false;
-    });
+    webElement.getWebElement(locatorIdentifier).click();
   }
 
   multipleClick(locatorIdentifier) {
-    webElement.getWebElement(locatorIdentifier).click({multiple: true}).then(function() {
-      return true;
-    }, function (error) {
-      return false;
-    });
+    webElement.getWebElement(locatorIdentifier).click({multiple: true});
   }
 
   focusClick(locatorIdentifier) {
-    webElement.getWebElement(locatorIdentifier).click({force: true}).then(function() {
-      return true;
-    }, function (error) {
-      return false;
-    });
+    webElement.getWebElement(locatorIdentifier).click({force: true});
   }
 
   realclick(locatorIdentifier) {
-    webElement.getWebElement(locatorIdentifier).realClick().then(function() {
-      return true;
-    }, function (error) {
-      return false;
-    });
+    webElement.getWebElement(locatorIdentifier).realClick();
   }
 
   check(locatorIdentifier) {
-    webElement.getWebElement(locatorIdentifier).check().then(function() {
-      return true;
-    }, function (error) {
-      return false;
-    });
+    webElement.getWebElement(locatorIdentifier).check();
   }
 }
 

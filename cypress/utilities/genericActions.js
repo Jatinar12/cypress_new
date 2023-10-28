@@ -8,47 +8,30 @@ class GenericActions {
     };
 
   checkUrl(url) {
-    cy.url().should('contains', url).then( function() {
-      return true;
-    }), function(error) {
-      return false;
-    };
+    cy.url().should('contains', url);
+   
   }
 
   refresh() {
-    cy.reload().then(function() {
-      return true;
-    }, function(err) {
-      return false;
-    });
+    cy.reload();
+    
   }
 
 
   setScrollPageDown() {
     cy.scrollTo(0, 800).then(function() {
       cy.get('.sidebar').scrollTo('bottom');
-      return true;
-    }, function(error) {
-      return false;
     });
   }
 
 
   getTitle() {
-    cy.title().then(function(text) {
+    cy.title();
       return text;
-    }, function(error) {
-      cy.log('--->Error: The title of of the Webpage is not captured: due to: ' + error);
-    });
   }
 
   clearCookies() {
-    try {
       cy.clearCookies();
-      return true;
-    } catch (err) {
-      return false;
-    }
   }
 
   getUnixTimeStamp() {
